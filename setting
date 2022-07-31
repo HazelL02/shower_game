@@ -18,7 +18,8 @@ function scene:create( event )
 
     local title = display.newText("닫기", display.contentWidth*0.75, display.contentHeight*0.25)
     title.size = 70
-
+	
+	--game.lua에서 객체 드래그할 때 쓰이는 함수 가져왔습니다.
 	local function drag( event )
 		if( event.phase == "began" ) then
 			display.getCurrentStage():setFocus( event.target )
@@ -40,6 +41,8 @@ function scene:create( event )
 	end
 
     function title:tap( event )
+    		--composer.geteVariable을 이용해서 드래그해야하는 객체들 불러왔습니다.
+		--모드에 따라 객체가 삭제되도록 game.lua에서 설정했습니다. 따라서 게임모드를 불러와서 모드에 따라 이벤트리스너를 붙여줬습니다.
 		soap = composer.getVariable("soap")
 		water = composer.getVariable("water")
 		fan = composer.getVariable("fan")
